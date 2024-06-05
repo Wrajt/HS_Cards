@@ -1,1 +1,11 @@
-<p>card-backs works!</p>
+<div class="cardBacks">
+<div *ngFor="let cardBack of cardBackNames; index as i" class="card w-96 bg-base-100 shadow-xl">
+  <figure><img [src]="cardBackImg[i]"/></figure>
+  <div class="card-body">
+    <h2 class="card-title">
+      {{ cardBackNames[i] }}
+    </h2>
+    <p>{{cardBackText[i] }}</p>
+  </div>
+</div>
+</div>
