@@ -15,15 +15,14 @@ export class CardBacksComponent implements OnInit{
   cardBackText: string[] = []
 
 ngOnInit() {
+
+
   this.apiService.getCardBacks().subscribe((data: any) => {
     for (let i = 0; i < data.cardBacks.length; i++) {
       this.cardBackNames.push(data.cardBacks[i].name.en_US)
       this.cardBackImg.push(data.cardBacks[i].image)
       this.cardBackText.push(data.cardBacks[i].text.en_US)
     }
-    console.log(this.cardBackNames)
-    console.log(this.cardBackImg)
-    console.log(this.cardBackText)
   })
 }
 
