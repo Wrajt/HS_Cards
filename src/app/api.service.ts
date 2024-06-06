@@ -40,7 +40,6 @@ export class ApiService {
     console.log("Fetching card backs with token:", this.accessToken);
     return this.http.get(url);
   }
-
   getCardBacks(): Observable<any> {
     if (this.accessToken) {
       return this.fetchCardBacks();
@@ -50,4 +49,22 @@ export class ApiService {
       );
     }
   }
+
+private fetchDeathKnightCards(): Observable<any>{
+    if(!this.accessToken){
+      throw new Error("Access token is null");
+    }
+    const url = `https://us.api.blizzard.com/hearthstone/cards?locale=en_US&class=deathknight&access_token=${this.accessToken}`;
+    console.log("Fetching death knight cards with token:", this.accessToken);
+    return this.http.get(url)
+}
+getDeathKnightCards(): Observable<any>{
+    if (this.accessToken){
+      return this.fetchDeathKnightCards();
+    } else {
+      return this.getToken().pipe(
+        switchMap(() => this.fetchDeathKnightCards())
+      );
+    }
+}
 }

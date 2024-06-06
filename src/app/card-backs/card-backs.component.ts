@@ -15,8 +15,6 @@ export class CardBacksComponent implements OnInit{
   cardBackText: string[] = []
 
 ngOnInit() {
-
-
   this.apiService.getCardBacks().subscribe((data: any) => {
     for (let i = 0; i < data.cardBacks.length; i++) {
       this.cardBackNames.push(data.cardBacks[i].name.en_US)
@@ -25,7 +23,5 @@ ngOnInit() {
     }
   })
 }
-
-
   constructor(private apiService: ApiService) {}
 }

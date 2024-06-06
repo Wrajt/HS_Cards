@@ -1,11 +1,49 @@
 
 <div role="tablist" class="tabs tabs-boxed">
-  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Tab 1" />
-  <div role="tabpanel" class="tab-content p-10">Tab content 1</div>
+  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Death Knight" checked/>
+  <div role="tabpanel" class="tab-content p-10">
+    <div class="cards">
+      <div *ngFor="let knightCard of knightCardNames; index as i" class="card w-96 bg-base-100 shadow-xl">
+        <figure><img [src]="knightCardImg[i]"/></figure>
+        <div class="card-body">
+          <h2 class="card-title">
+            {{ knightCardNames[i] }}
+          </h2>
+          <p>{{knightCardText[i] }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Tab 2" checked />
+  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Druid" />
   <div role="tabpanel" class="tab-content p-10">Tab content 2</div>
 
-  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Tab 3" />
+  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Hunter" />
   <div role="tabpanel" class="tab-content p-10">Tab content 3</div>
+
+  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Mage" />
+  <div role="tabpanel" class="tab-content p-10">Mage</div>
+
+  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Paladin" />
+  <div role="tabpanel" class="tab-content p-10">Tab content 2</div>
+
+  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Priest" />
+  <div role="tabpanel" class="tab-content p-10">Tab content 3</div>
+
+  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Rogue" />
+  <div role="tabpanel" class="tab-content p-10">Mage</div>
+
+  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Shaman"  />
+  <div role="tabpanel" class="tab-content p-10">Tab content 2</div>
+
+  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Warlock" />
+  <div role="tabpanel" class="tab-content p-10">Tab content 3</div>
+
+  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Warrior" />
+  <div role="tabpanel" class="tab-content p-10">Mage</div>
+
+  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Neutral" />
+  <div role="tabpanel" class="tab-content p-10">Tab content 2</div>
+
+
 </div>

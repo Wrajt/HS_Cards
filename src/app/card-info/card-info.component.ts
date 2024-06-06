@@ -9,9 +9,18 @@ import { CommonModule, NgForOf } from '@angular/common';
   styleUrl: './card-info.component.css'
 })
 export class CardInfoComponent implements OnInit{
-
-
+  knightCardNames: string[] = []
+  knightCardImg: string[] = []
+  knightCardText: string[] = []
 
   ngOnInit() {
+    this.apiService.getDeathKnightCards().subscribe((data: any) => {
+      for (let i = 0; i < data.cards.length; i++) {
+        this.knightCardNames.push(data.cards[i].name)
+        this.knightCardImg.push(data.cards[i].image)
+        this.knightCardText.push(data.cards[i].text)
+      }
+    })
   }
+  constructor(private apiService: ApiService) {}
 }
