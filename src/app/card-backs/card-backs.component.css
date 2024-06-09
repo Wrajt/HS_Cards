@@ -1,15 +1,15 @@
 .cardBacks {
   display: flex;
-  justify-content: center; /* Center the cards horizontally */
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 16px; /* Adjust the gap between cards as needed */
-  padding: 0 16px; /* Optional: Add padding to prevent cards from touching screen edges */
+  gap: 16px;
+  padding: 0 16px;
 }
 
 .card {
   flex: 1 1 auto;
-  max-width: 300px; /* You can adjust the max width as needed */
-  margin: 0 8px; /* Equal left and right margins for consistency */
+  max-width: 300px;
+  margin: 0 8px;
 }
 
 .card:hover {
