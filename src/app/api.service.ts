@@ -55,7 +55,7 @@ private fetchAllCards(): Observable<CardDataInterface>{
     if(!this.accessToken){
       throw new Error("Access token is null");
     }
-    const url = `https://us.api.blizzard.com/hearthstone/cards?locale=en_US&pageSize=8059&access_token=${this.accessToken}`;
+    const url = `https://us.api.blizzard.com/hearthstone/cards?locale=en_US&pageSize=9028&access_token=${this.accessToken}`;
     console.log("Fetching all cards with token:", this.accessToken);
     return this.http.get<CardDataInterface>(url)
 }
