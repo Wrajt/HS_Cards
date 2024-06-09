@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { CLIENT_ID, CLIENT_SECRET } from "./API_KEYS.const";
 import { Observable } from 'rxjs';
 import { tap, switchMap } from 'rxjs/operators';
+import { CardDataInterface, Card } from './interfaces/card-data.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -50,20 +51,20 @@ export class ApiService {
     }
   }
 
-private fetchDeathKnightCards(): Observable<any>{
+private fetchAllCards(): Observable<CardDataInterface>{
     if(!this.accessToken){
       throw new Error("Access token is null");
     }
-    const url = `https://us.api.blizzard.com/hearthstone/cards?locale=en_US&class=deathknight&access_token=${this.accessToken}`;
-    console.log("Fetching death knight cards with token:", this.accessToken);
-    return this.http.get(url)
+    const url = `https://us.api.blizzard.com/hearthstone/cards?locale=en_US&pageSize=8059&access_token=${this.accessToken}`;
+    console.log("Fetching all cards with token:", this.accessToken);
+    return this.http.get<CardDataInterface>(url)
 }
-getDeathKnightCards(): Observable<any>{
+getAllCards(): Observable<CardDataInterface>{
     if (this.accessToken){
-      return this.fetchDeathKnightCards();
+      return this.fetchAllCards();
     } else {
       return this.getToken().pipe(
-        switchMap(() => this.fetchDeathKnightCards())
+        switchMap(() => this.fetchAllCards())
       );
     }
 }

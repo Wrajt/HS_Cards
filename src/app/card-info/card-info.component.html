@@ -1,49 +1,112 @@
 
-<div role="tablist" class="tabs tabs-boxed">
-  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Death Knight" checked/>
-  <div role="tabpanel" class="tab-content p-10">
-    <div class="cards">
-      <div *ngFor="let knightCard of knightCardNames; index as i" class="card w-96 bg-base-100 shadow-xl">
-        <figure><img [src]="knightCardImg[i]"/></figure>
+<div role="tablist" class="tabs tabs-bordered">
+  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Warrior" checked/>
+  <div role="tabpanel" class="tab-content p-10" >
+    <div class="cardTabs">
+      <div *ngFor="let card of warriorCards; index as i" class="card w-96 bg-base-100 shadow-xl">
+        <figure><img [src]="warriorCards[i].image"/></figure>
         <div class="card-body">
-          <h2 class="card-title">
-            {{ knightCardNames[i] }}
-          </h2>
-          <p>{{knightCardText[i] }}</p>
         </div>
       </div>
     </div>
   </div>
 
-  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Druid" />
-  <div role="tabpanel" class="tab-content p-10">Tab content 2</div>
+  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Mage"/>
+  <div role="tabpanel" class="tab-content p-10">
+    <div class="cardTabs">
+      <div *ngFor="let card of mageCards; index as i" class="card w-96 bg-base-100 shadow-xl">
+        <figure><img [src]="mageCards[i].image"/></figure>
+        <div class="card-body">
+        </div>
+      </div>
+    </div>
+</div>
 
-  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Hunter" />
-  <div role="tabpanel" class="tab-content p-10">Tab content 3</div>
+  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Druid"/>
+  <div role="tabpanel" class="tab-content p-10">
+    <div class="cardTabs">
+      <div *ngFor="let card of druidCards; index as i" class="card w-96 bg-base-100 shadow-xl">
+        <figure><img [src]="druidCards[i].image"/></figure>
+        <div class="card-body">
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Mage" />
-  <div role="tabpanel" class="tab-content p-10">Mage</div>
+  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Hunter"/>
+  <div role="tabpanel" class="tab-content p-10">
+    <div class="cardTabs">
+      <div *ngFor="let card of hunterCards; index as i" class="card w-96 bg-base-100 shadow-xl">
+        <figure><img [src]="hunterCards[i].image"/></figure>
+        <div class="card-body">
+        </div>
+      </div>
+    </div>
+</div>
 
-  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Paladin" />
-  <div role="tabpanel" class="tab-content p-10">Tab content 2</div>
+  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Paladin"/>
+  <div role="tabpanel" class="tab-content p-10">
+    <div class="cardTabs">
+      <div *ngFor="let card of paladinCards; index as i" class="card w-96 bg-base-100 shadow-xl">
+        <figure><img [src]="paladinCards[i].image"/></figure>
+        <div class="card-body">
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Priest" />
-  <div role="tabpanel" class="tab-content p-10">Tab content 3</div>
+  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Priest"/>
+  <div role="tabpanel" class="tab-content p-10">
+    <div class="cardTabs">
+      <div *ngFor="let card of priestCards; index as i" class="card w-96 bg-base-100 shadow-xl">
+        <figure><img [src]="priestCards[i].image"/></figure>
+        <div class="card-body">
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Rogue" />
-  <div role="tabpanel" class="tab-content p-10">Mage</div>
+  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Rogue"/>
+  <div role="tabpanel" class="tab-content p-10">
+    <div class="cardTabs">
+      <div *ngFor="let card of rogueCards; index as i" class="card w-96 bg-base-100 shadow-xl">
+        <figure><img [src]="rogueCards[i].image"/></figure>
+        <div class="card-body">
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Shaman"  />
-  <div role="tabpanel" class="tab-content p-10">Tab content 2</div>
+  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Shaman"/>
+  <div role="tabpanel" class="tab-content p-10">
+    <div class="cardTabs">
+      <div *ngFor="let card of shamanCards; index as i" class="card w-96 bg-base-100 shadow-xl">
+        <figure><img [src]="shamanCards[i].image"/></figure>
+        <div class="card-body">
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Warlock" />
-  <div role="tabpanel" class="tab-content p-10">Tab content 3</div>
+  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Warlock"/>
+  <div role="tabpanel" class="tab-content p-10">
+    <div class="cardTabs">
+      <div *ngFor="let card of warlockCards; index as i" class="card w-96 bg-base-100 shadow-xl">
+        <figure><img [src]="warlockCards[i].image"/></figure>
+        <div class="card-body">
+        </div>
+      </div>
+    </div>
+</div>
 
-  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Warrior" />
-  <div role="tabpanel" class="tab-content p-10">Mage</div>
-
-  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Neutral" />
-  <div role="tabpanel" class="tab-content p-10">Tab content 2</div>
-
-
+  <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Neutral"/>
+  <div role="tabpanel" class="tab-content p-10">
+    <div class="cardTabs">
+      <div *ngFor="let card of neutralCards; index as i" class="card w-96 bg-base-100 shadow-xl">
+        <figure><img [src]="neutralCards[i].image"/></figure>
+        <div class="card-body">
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
