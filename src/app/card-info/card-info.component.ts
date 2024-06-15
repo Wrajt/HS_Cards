@@ -33,7 +33,6 @@ export class CardInfoComponent implements OnInit {
       console.log('Total cards fetched:', cards.length);
       this.allCards = cards;
       this.filterAndSortCards();
-      console.log('Warrior Cards:', this.warriorCards);
     });
   }
 
