@@ -20,10 +20,16 @@ This is a simple application that lets you:
 
 ## Before running the app
 
+Download repo and open folder in your IDE of choice
+
 Run `npm install`
 
-## Development server
+Visit `https://develop.battle.net/documentation/guides/getting-started` and get your CLIENT_ID and CLIENT_SECRET
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Go to src -> app -> `API_KEYS.const.ts` file and update your key info
+
+Run `ng serve` and navigate to `http://localhost:4200/`,
+
+
 
 
