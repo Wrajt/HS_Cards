@@ -1,84 +1,13 @@
 <div role="tablist" class="tabs tabs-bordered">
-  <input type="radio" name="my_tabs" role="tab" class="tab" aria-label="Warrior" (click)="onClassChange('warrior')" checked />
-  <div role="tabpanel" class="tab-content p-10">
-    <div class="cardTabs">
-      <div *ngFor="let card of cards['warrior']" class="card w-96 bg-base-100 shadow-xl">
-        <figure><img [src]="card.image" /></figure>
-      </div>
-    </div>
-  </div>
-  <input type="radio" name="my_tabs" role="tab" class="tab" aria-label="Mage" (click)="onClassChange('mage')" />
-  <div role="tabpanel" class="tab-content p-10">
-    <div class="cardTabs">
-      <div *ngFor="let card of cards['mage']" class="card w-96 bg-base-100 shadow-xl">
-        <figure><img [src]="card.image" /></figure>
-      </div>
-    </div>
-  </div>
-  <input type="radio" name="my_tabs" role="tab" class="tab" aria-label="Druid" (click)="onClassChange('druid')" />
-  <div role="tabpanel" class="tab-content p-10">
-    <div class="cardTabs">
-      <div *ngFor="let card of cards['druid']" class="card w-96 bg-base-100 shadow-xl">
-        <figure><img [src]="card.image" /></figure>
-      </div>
-    </div>
-  </div>
-  <input type="radio" name="my_tabs" role="tab" class="tab" aria-label="Hunter" (click)="onClassChange('hunter')" />
-  <div role="tabpanel" class="tab-content p-10">
-    <div class="cardTabs">
-      <div *ngFor="let card of cards['hunter']" class="card w-96 bg-base-100 shadow-xl">
-        <figure><img [src]="card.image" /></figure>
-      </div>
-    </div>
-  </div>
-  <input type="radio" name="my_tabs" role="tab" class="tab" aria-label="Paladin" (click)="onClassChange('paladin')" />
-  <div role="tabpanel" class="tab-content p-10">
-    <div class="cardTabs">
-      <div *ngFor="let card of cards['paladin']" class="card w-96 bg-base-100 shadow-xl">
-        <figure><img [src]="card.image" /></figure>
-      </div>
-    </div>
-  </div>
-  <input type="radio" name="my_tabs" role="tab" class="tab" aria-label="Priest" (click)="onClassChange('priest')" />
-  <div role="tabpanel" class="tab-content p-10">
-    <div class="cardTabs">
-      <div *ngFor="let card of cards['priest']" class="card w-96 bg-base-100 shadow-xl">
-        <figure><img [src]="card.image" /></figure>
-      </div>
-    </div>
-  </div>
-  <input type="radio" name="my_tabs" role="tab" class="tab" aria-label="Rogue" (click)="onClassChange('rogue')" />
-  <div role="tabpanel" class="tab-content p-10">
-    <div class="cardTabs">
-      <div *ngFor="let card of cards['rogue']" class="card w-96 bg-base-100 shadow-xl">
-        <figure><img [src]="card.image" /></figure>
-      </div>
-    </div>
-  </div>
-  <input type="radio" name="my_tabs" role="tab" class="tab" aria-label="Shaman" (click)="onClassChange('shaman')" />
-  <div role="tabpanel" class="tab-content p-10">
-    <div class="cardTabs">
-      <div *ngFor="let card of cards['shaman']" class="card w-96 bg-base-100 shadow-xl">
-        <figure><img [src]="card.image" /></figure>
-      </div>
-    </div>
-  </div>
-  <input type="radio" name="my_tabs" role="tab" class="tab" aria-label="Warlock" (click)="onClassChange('warlock')" />
-  <div role="tabpanel" class="tab-content p-10">
-    <div class="cardTabs">
-      <div *ngFor="let card of cards['warlock']" class="card w-96 bg-base-100 shadow-xl">
-        <figure><img [src]="card.image" /></figure>
-      </div>
-    </div>
-  </div>
-  <input type="radio" name="my_tabs" role="tab" class="tab" aria-label="Neutral" (click)="onClassChange('neutral')" />
+  <button type="button" class="tab button-hover-effect" *ngFor="let class of classNames"
+          [attr.aria-label]="class" (click)="onClassChange(class)" [class.active]="currentClass === class">
+    {{ class }}
+  </button>
+</div>
 
-  <div role="tabpanel" class="tab-content p-10">
-    <div class="cardTabs">
-      <div *ngFor="let card of cards['neutral']" class="card w-96 bg-base-100 shadow-xl">
-        <figure><img [src]="card.image" /></figure>
-      </div>
-    </div>
+<div class="cardTabs">
+  <div *ngFor="let card of cards[currentClass]" class="card w-96 bg-base-100 shadow-xl">
+    <figure><img [src]="card.image" /></figure>
   </div>
 </div>
 
@@ -87,4 +16,3 @@
   [totalPages]="totalPages"
   (pageChange)="onPageChange($event)">
 </app-paginator>
-
