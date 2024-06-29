@@ -3,7 +3,7 @@ module.exports = {
   daisyui: {
     themes: ["coffee"],
   },
-  content: ["./src/**/*.{html,ts}",],
+  content: ["./src/**/*.{html,ts, js}",],
   theme: {
     extend: {},
   },
