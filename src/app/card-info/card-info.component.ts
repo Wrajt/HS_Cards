@@ -29,6 +29,7 @@ export class CardInfoComponent implements OnInit {
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
+    // @ts-ignore
     this.apiService.getAllCards().subscribe((cards: Card[]) => {
       console.log('Total cards fetched:', cards.length);
       this.allCards = cards;

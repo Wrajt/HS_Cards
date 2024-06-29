@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { CardBacksComponent } from './card-backs/card-backs.component';
 import { CardInfoComponent} from "./card-info/card-info.component";
-import {DeckBuilderComponent} from "./deck-builder/deck-builder.component";
+import { DeckBuilderComponent} from "./deck-builder/deck-builder.component";
 
 export const routes: Routes = [
   {path: 'home', component: HomeComponent, pathMatch: 'full'},
