@@ -1,67 +1,59 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from "../api.service";
 import { CommonModule, NgForOf } from '@angular/common';
 import { MatTab, MatTabGroup, MatTabsModule } from '@angular/material/tabs';
-import { Card } from '../interfaces/card-data.interface';
+import { PaginatorComponent } from "../paginator/paginator.component";
+import { Card } from "../interfaces/card-data.interface";
 
 @Component({
   selector: 'app-card-info',
   standalone: true,
-  imports: [NgForOf, CommonModule, MatTabGroup, MatTab, MatTabsModule],
+  imports: [NgForOf, CommonModule, MatTabGroup, MatTab, MatTabsModule, PaginatorComponent],
   templateUrl: './card-info.component.html',
   styleUrls: ['./card-info.component.css']
 })
 export class CardInfoComponent implements OnInit {
-  @Input() label: string = '';
-
-  allCards: Card[] = [];
-  warriorCards: Card[] = [];
-  druidCards: Card[] = [];
-  hunterCards: Card[] = [];
-  mageCards: Card[] = [];
-  paladinCards: Card[] = [];
-  priestCards: Card[] = [];
-  rogueCards: Card[] = [];
-  shamanCards: Card[] = [];
-  warlockCards: Card[] = [];
-  neutralCards: Card[] = [];
+  classNames: string[] = ['warrior', 'mage', 'druid', 'hunter', 'paladin', 'priest', 'rogue', 'shaman', 'warlock', 'neutral'];
+  cards: { [key: string]: Card[] } = {};
+  currentClass: string = 'warrior';
+  currentPage: number = 1;
+  pageSize: number = 20;
+  totalPages: number = 1;
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    // @ts-ignore
-    this.apiService.getAllCards().subscribe((cards: Card[]) => {
-      console.log('Total cards fetched:', cards.length);
-      this.allCards = cards;
-      this.filterAndSortCards();
-    });
+    this.classNames.forEach(className => this.loadCardInfo(1, this.pageSize, className));
   }
 
-  filterAndSortCards(): void {
-    this.warriorCards = this.sortByManaCost(this.getUniqueCards(this.allCards.filter(card => card.classId === 10)));
-    this.druidCards = this.sortByManaCost(this.getUniqueCards(this.allCards.filter(card => card.classId === 2)));
-    this.hunterCards = this.sortByManaCost(this.getUniqueCards(this.allCards.filter(card => card.classId === 3)));
-    this.mageCards = this.sortByManaCost(this.getUniqueCards(this.allCards.filter(card => card.classId === 4)));
-    this.paladinCards = this.sortByManaCost(this.getUniqueCards(this.allCards.filter(card => card.classId === 5)));
-    this.priestCards = this.sortByManaCost(this.getUniqueCards(this.allCards.filter(card => card.classId === 6)));
-    this.rogueCards = this.sortByManaCost(this.getUniqueCards(this.allCards.filter(card => card.classId === 7)));
-    this.shamanCards = this.sortByManaCost(this.getUniqueCards(this.allCards.filter(card => card.classId === 8)));
-    this.warlockCards = this.sortByManaCost(this.getUniqueCards(this.allCards.filter(card => card.classId === 9)));
-    this.neutralCards = this.sortByManaCost(this.getUniqueCards(this.allCards.filter(card => card.classId === 12)));
+  loadCardInfo(page: number = this.currentPage, pageSize: number = this.pageSize, className: string = this.currentClass): void {
+    this.apiService.getCardInfo(page, pageSize, className).subscribe((data: { cards: Card[], pageCount: number, page: number }) => {
+      const uniqueCards = this.getUniqueCards(data.cards);
+      this.cards[className] = uniqueCards;
+      this.totalPages = data.pageCount;
+      this.currentPage = data.page;
+    });
   }
 
   getUniqueCards(cards: Card[]): Card[] {
-    const uniqueNames = new Set();
-    return cards.filter(card => {
-      if (!uniqueNames.has(card.name)) {
-        uniqueNames.add(card.name);
-        return true;
+    const uniqueCards = new Map<string, Card>();
+    cards.forEach(card => {
+      if (!uniqueCards.has(card.name)) {
+        uniqueCards.set(card.name, card);
       }
-      return false;
     });
+    return Array.from(uniqueCards.values());
   }
 
-  sortByManaCost(cards: Card[]): Card[] {
-    return cards.sort((a, b) => a.manaCost - b.manaCost);
+  onClassChange(className: string): void {
+    this.currentClass = className;
+    this.currentPage = 1;
+    this.loadCardInfo(this.currentPage, this.pageSize, className);
   }
+
+  onPageChange(newPage: number): void {
+    this.currentPage = newPage;
+    this.loadCardInfo(this.currentPage, this.pageSize, this.currentClass);
+  }
+
 }

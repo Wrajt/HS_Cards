@@ -1,5 +1,5 @@
-<div class="pagination-controls">
-  <button (click)="goToPreviousPage()" [disabled]="currentPage === 1">Previous</button>
-  <span>Page {{currentPage}} of {{totalPages}}</span>
-  <button (click)="goToNextPage()" [disabled]="currentPage === totalPages">Next</button>
+<div class="join">
+  <button class="join-item btn" (click)="goToPreviousPage()" [disabled]="currentPage === 1">«</button>
+  <button class="join-item btn">Page {{currentPage}} of {{totalPages}}</button>
+  <button class="join-item btn" (click)="goToNextPage()" [disabled]="currentPage === totalPages">»</button>
 </div>

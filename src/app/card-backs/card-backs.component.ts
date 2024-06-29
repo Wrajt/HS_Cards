@@ -13,7 +13,7 @@ import { PaginatorComponent } from "../paginator/paginator.component";
 export class CardBacksComponent implements OnInit {
   cardBacks: any[] = []; // Array to hold all card backs
   currentPage: number = 1;
-  pageSize: number = 40;
+  pageSize: number = 18;
   totalPages: number = 1; // Default to 1 to prevent division by zero or undefined
 
   constructor(private apiService: ApiService) {}
@@ -33,7 +33,6 @@ export class CardBacksComponent implements OnInit {
       this.currentPage = data.page;
     });
   }
-
 
   onPageChange(newPage: number) {
     this.currentPage = newPage;

@@ -14,7 +14,6 @@ export class ApiService {
   constructor(private http: HttpClient) {
     console.log("API Service is working!");
   }
-
   private getToken(): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -29,7 +28,6 @@ export class ApiService {
         })
       );
   }
-
   private fetchCardBacks(page: number = 1, pageSize: number = 40): Observable<any> {
     if (!this.accessToken) {
       throw new Error("Access token is null");
@@ -37,7 +35,6 @@ export class ApiService {
     const url = `https://us.api.blizzard.com/hearthstone/cardbacks?locale=en_US&pageSize=${pageSize}&page=${page}&access_token=${this.accessToken}`;
     return this.http.get(url);
   }
-
   getCardBacks(page: number = 1, pageSize: number = 40): Observable<any> {
     if (this.accessToken) {
       return this.fetchCardBacks(page, pageSize);
@@ -47,4 +44,23 @@ export class ApiService {
       );
     }
   }
+
+  private fetchCardInfo(page: number= 1, pageSize: number = 40,className: string="") :Observable<any>{
+    if (!this.accessToken){
+      throw new Error ("Access token is null");
+    }
+    const url:string =`https://us.api.blizzard.com/hearthstone/cards?locale=en_US&class=${className}&page=${page}&pageSize=${pageSize}&access_token=${this.accessToken}`;
+    return this.http.get(url)
+  }
+
+  getCardInfo(page: number= 1, pageSize: number = 40,className: string=""):Observable<any>{
+    if (this.accessToken) {
+      return this.fetchCardInfo(page, pageSize, className)
+    } else {
+      return this.getToken().pipe(
+        switchMap(()=> this.fetchCardInfo(page, pageSize, className))
+      )
+    }
+  }
+
 }

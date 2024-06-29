@@ -1,5 +1,8 @@
 export interface CardDataInterface {
   cards: Card[];
+  page: number;
+  pageSize: number;
+  pageCount: number;
 }
 
 export interface Card {
