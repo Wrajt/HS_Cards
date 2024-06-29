@@ -11,3 +11,5 @@ export const routes: Routes = [
   {path: 'deck-builder', component: DeckBuilderComponent, pathMatch: 'full'},
   {path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
+
+RouterModule.forRoot(routes, { useHash: true })
