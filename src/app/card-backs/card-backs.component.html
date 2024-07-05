@@ -1,12 +1,17 @@
-<div class="cardBacks">
-  <div *ngFor="let cardBack of cardBacks; index as i" class="card w-96 bg-base-100 shadow-xl">
-    <figure><img [src]="cardBack.image" /></figure>
-    <div class="card-body">
-      <h2 class="card-title">{{ cardBack.name }}</h2>
-      <p>{{ cardBack.text }}</p>
+
+  <app-loading-container [loading]="loading" [error]="error">
+    <div class="cardBacks">
+    <div *ngFor="let cardBack of cardBacks; index as i" class="card w-96 bg-base-100 shadow-xl">
+      <figure><img [src]="cardBack.image" /></figure>
+      <div class="card-body">
+        <h2 class="card-title">{{ cardBack.name }}</h2>
+        <p>{{ cardBack.text }}</p>
+      </div>
     </div>
-  </div>
-</div>
+    </div>
+  </app-loading-container>
+
+
 <app-paginator
   [currentPage]="currentPage"
   [totalPages]="totalPages"

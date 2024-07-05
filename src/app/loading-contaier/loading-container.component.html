@@ -1,0 +1,12 @@
+<ng-container *ngIf="!loading; else loadingOrError">
+  <ng-content></ng-content>
+</ng-container>
+
+<ng-template #loadingOrError>
+  <div class="loading-container" *ngIf="loading">
+    <span class="loading loading-bars loading-lg"></span>
+  </div>
+  <div class="error-message" *ngIf="error">
+    <p>Error loading the data.</p>
+  </div>
+</ng-template>

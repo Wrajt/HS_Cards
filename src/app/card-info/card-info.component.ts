@@ -4,11 +4,12 @@ import { CommonModule, NgForOf } from '@angular/common';
 import { MatTab, MatTabGroup, MatTabsModule } from '@angular/material/tabs';
 import { PaginatorComponent } from "../paginator/paginator.component";
 import { Card } from "../interfaces/card-data.interface";
+import { LoadingContainerComponent} from "../loading-contaier/loading-container.component";
 
 @Component({
   selector: 'app-card-info',
   standalone: true,
-  imports: [NgForOf, CommonModule, MatTabGroup, MatTab, MatTabsModule, PaginatorComponent],
+  imports: [NgForOf, CommonModule, MatTabGroup, MatTab, MatTabsModule, PaginatorComponent, LoadingContainerComponent],
   templateUrl: './card-info.component.html',
   styleUrls: ['./card-info.component.css']
 })
