@@ -23,7 +23,7 @@
 
 
 .button-hover-effect {
-  transition: background-color 0.3s ease; /
+  transition: background-color 0.3s ease;
 }
 
 .button-hover-effect:hover {

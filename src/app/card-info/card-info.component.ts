@@ -19,6 +19,8 @@ export class CardInfoComponent implements OnInit {
   currentPage: number = 1;
   pageSize: number = 20;
   totalPages: number = 1;
+  loading: boolean = false; // Dodano właściwość loading
+  error: boolean = false; // Dodano właściwość error do obsługi błędów
 
   constructor(private apiService: ApiService) {}
 
@@ -27,11 +29,20 @@ export class CardInfoComponent implements OnInit {
   }
 
   loadCardInfo(page: number = this.currentPage, pageSize: number = this.pageSize, className: string = this.currentClass): void {
-    this.apiService.getCardInfo(page, pageSize, className).subscribe((data: { cards: Card[], pageCount: number, page: number }) => {
-      const uniqueCards = this.getUniqueCards(data.cards);
-      this.cards[className] = uniqueCards;
-      this.totalPages = data.pageCount;
-      this.currentPage = data.page;
+    this.loading = true; // Ustawienie loading na true przed pobraniem danych
+    this.apiService.getCardInfo(page, pageSize, className).subscribe({
+      next: (data: { cards: Card[], pageCount: number, page: number }) => {
+        const uniqueCards = this.getUniqueCards(data.cards);
+        this.cards[className] = uniqueCards;
+        this.totalPages = data.pageCount;
+        this.currentPage = data.page;
+        this.loading = false; // Ustawienie loading na false po zakończeniu pobierania danych
+      },
+      error: (err) => {
+        console.error(err);
+        this.error = true;
+        this.loading = false; // Ustawienie loading na false po wystąpieniu błędu
+      }
     });
   }
 
@@ -55,5 +66,4 @@ export class CardInfoComponent implements OnInit {
     this.currentPage = newPage;
     this.loadCardInfo(this.currentPage, this.pageSize, this.currentClass);
   }
-
 }

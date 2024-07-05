@@ -6,9 +6,20 @@
 </div>
 
 <div class="cardTabs">
-  <div *ngFor="let card of cards[currentClass]" class="card w-96 bg-base-100 shadow-xl">
-    <figure><img [src]="card.image" /></figure>
-  </div>
+  <ng-container *ngIf="!loading; else loadingOrError">
+    <div *ngFor="let card of cards[currentClass]" class="card w-96 bg-base-100 shadow-xl">
+      <figure><img [src]="card.image" /></figure>
+    </div>
+  </ng-container>
+
+  <ng-template #loadingOrError>
+    <div class="loading-container" *ngIf="loading">
+      <span class="loading loading-bars loading-lg"></span>
+    </div>
+    <div class="error-message" *ngIf="error">
+      <p>There has been an error fetching the data.</p>
+    </div>
+  </ng-template>
 </div>
 
 <app-paginator
