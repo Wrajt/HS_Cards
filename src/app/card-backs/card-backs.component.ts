@@ -12,12 +12,12 @@ import { LoadingContainerComponent} from "../loading-contaier/loading-container.
   styleUrls: ['./card-backs.component.css']
 })
 export class CardBacksComponent implements OnInit {
-  cardBacks: any[] = []; // Array to hold all card backs
+  cardBacks: any[] = [];
   currentPage: number = 1;
   pageSize: number = 18;
-  totalPages: number = 1; // Default to 1 to prevent division by zero or undefined
-  loading: boolean = false; // Dodane pole do przechowywania stanu ładowania
-  error: boolean = false; // Dodane pole do przechowywania stanu błędu
+  totalPages: number = 1;
+  loading: boolean = false;
+  error: boolean = false;
 
 
   constructor(private apiService: ApiService) {}
@@ -27,7 +27,7 @@ export class CardBacksComponent implements OnInit {
   }
 
   loadCardBacks(page: number = this.currentPage, pageSize: number = this.pageSize): void {
-    this.loading = true; // Ustawienie stanu ładowania na true przed pobraniem danych
+    this.loading = true; //
 
     this.apiService.getCardBacks(page, pageSize).subscribe(
       (data: any) => {
@@ -38,12 +38,12 @@ export class CardBacksComponent implements OnInit {
         }));
         this.totalPages = data.pageCount;
         this.currentPage = data.page;
-        this.loading = false; // Ustawienie stanu ładowania na false po pobraniu danych
+        this.loading = false;
       },
       (error) => {
         console.error('Error fetching card backs:', error);
-        this.loading = false; // Ustawienie stanu ładowania na false w przypadku błędu
-        this.error = true; // Ustawienie stanu błędu na true
+        this.loading = false;
+        this.error = true;
       }
     );
   }

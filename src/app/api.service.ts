@@ -12,7 +12,6 @@ export class ApiService {
   private accessToken: string | null = null;
 
   constructor(private http: HttpClient) {
-    console.log("API Service is working!");
   }
   private getToken(): Observable<any> {
     const headers = new HttpHeaders({
