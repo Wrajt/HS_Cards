@@ -2,10 +2,13 @@
 
 # HSCards
 
-Welcome to Hearthstone Deck Builder
+Welcome to Hearthstone Deck Builder!
 
 This is a simple HS project that lets you see all card back available in the game as well as all the cards in the game.
 You can also build a deck with the cards you like. Enjoy!
+
+## UPDATE 1
+The website is now hosted! You can see it [here](https://hscards.bieda.it/home)!
 
 ## About the app
 
@@ -16,7 +19,8 @@ This is a simple application that lets you:
 ## Future project plans
 
 - [ ] creating deck builder module that allows you to build your own deck, following official deckbuilding rules
-- [ ] hosting
+- [ ] database connection that allows user to save their decks
+- [x] hosting - DONE! You can test the app [here](https://hscards.bieda.it/home).
 
 ## Before running the app
 
