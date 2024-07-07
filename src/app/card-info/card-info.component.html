@@ -1,7 +1,7 @@
 <div role="tablist" class="tabs tabs-bordered">
   <button type="button" class="tab button-hover-effect" *ngFor="let class of classNames"
           [attr.aria-label]="class" (click)="onClassChange(class)" [class.active]="currentClass === class">
-    {{ class }}
+    {{ class | titlecase }}
   </button>
 </div>
 

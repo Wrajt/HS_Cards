@@ -1,0 +1,10 @@
+
+<label class="form-control w-full max-w-xs">
+  <div class="label">
+    <span class="label-text">Pick your class</span>
+  </div>
+  <select class="select select-bordered">
+    <option disabled selected>Class</option>
+    <option *ngFor="let className of classNames" [value]="className">{{ className | titlecase }}</option>
+  </select>
+</label>
