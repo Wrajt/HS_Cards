@@ -1,20 +1,8 @@
 <div role="tablist" class="tabs tabs-bordered">
-  <button type="button" class="tab button-hover-effect" *ngFor="let class of classNames"
-          [attr.aria-label]="class" (click)="onClassChange(class)" [class.active]="currentClass === class">
-    {{ class | titlecase }}
+  <button type="button" class="btn btn-outline btn-primary" *ngFor="let className of classNames"
+          [attr.aria-label]="className" (click)="onClassChange(className)" [class.active]="currentClass === className">
+    {{ className | titlecase }}
   </button>
 </div>
 
-<app-loading-container [loading]="loading" [error]="error">
-  <div class="cardTabs">
-    <div *ngFor="let card of cards[currentClass]" class="card w-96 bg-base-100 shadow-xl">
-      <figure><img [src]="card.image" /></figure>
-    </div>
-  </div>
-</app-loading-container>
-
-<app-paginator
-  [currentPage]="currentPage"
-  [totalPages]="totalPages"
-  (pageChange)="onPageChange($event)">
-</app-paginator>
+<app-cards-display #cardsDisplay [currentClass]="currentClass"/>
