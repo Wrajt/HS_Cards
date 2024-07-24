@@ -17,10 +17,8 @@
             clip-rule="evenodd"/>
     </svg>
   </label>
+
+  <app-cards-display #cardsDisplay [currentClass]="selectedClass"/>
 </div>
 
-<div class="card-container">
-  <div *ngFor="let card of cards" class="card w-96 bg-base-100 shadow-xl">
-    <figure><img [src]="card.image" alt="{{ card.name }}"/></figure>
-  </div>
-</div>
+
