@@ -1,0 +1,13 @@
+<app-loading-container [loading]="loading" [error]="error">
+  <div class="cardTabs">
+    <div *ngFor="let card of cards[currentClass]" class="card w-96 bg-base-100 shadow-xl">
+      <figure><img [src]="card.image" [alt]="card.name"/></figure>
+    </div>
+  </div>
+</app-loading-container>
+
+<app-paginator
+  [currentPage]="currentPage"
+  [totalPages]="totalPages"
+  (pageChange)="onPageChange($event)">
+</app-paginator>

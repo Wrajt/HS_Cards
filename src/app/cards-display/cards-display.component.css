@@ -1,0 +1,33 @@
+.cardTabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 0 16px;
+}
+
+.card {
+  flex: 1 1 auto;
+  max-width: 300px;
+  margin: 0 8px;
+}
+
+.card:hover {
+  transform: translateY(-0.5rem) scale(1.0125);
+  box-shadow: 0 0.5em 3rem -1rem rgba(0,0,0,0.5);
+}
+
+.tabs {
+  margin-bottom: 20px;
+}
+
+
+.button-hover-effect {
+  transition: background-color 0.3s ease;
+}
+
+.button-hover-effect:hover {
+  background-color: #ffc31f;
+  cursor: pointer;
+}
+
